@@ -1,14 +1,14 @@
 modLoader="javafml"
 loaderVersion="*"
 license="All rights reserved"
-issueTrackerURL="https://github.com/ricksouth/serilum-mc-mods/labels/Mod:%20Pumpkillager%27s%20Quest"
+issueTrackerURL="https://github.com/Serilum/.issue-tracker/labels/Mod:%20Pumpkillager%27s%20Quest"
 logoFile="icon.png"
 
 [[mods]]
 modId="pumpkillagersquest"
-version="3.4"
+version="3.5"
 displayName="Pumpkillager's Quest"
-displayURL="https://curseforge.com/minecraft/mc-mods/pumpkillagers-quest"
+displayURL="https://serilum.com/mod/pumpkillagers-quest"
 authors="Rick South"
 description='''Help out the Pumpkillager! With custom encounters, cosmetics and a boss fight. A SpookyJam 2022 submission.
 '''
@@ -21,13 +21,15 @@ If you would like to contribute too, check out https://ricksouth.com/donate. App
 
 [[dependencies.pumpkillagersquest]]
     modId="collective"
+    type="required"
     mandatory=true
-    versionRange="[7.13,)"
+    versionRange="[7.21,)"
     ordering="NONE"
     side="BOTH"
 
 [[dependencies.pumpkillagersquest]]
     modId="minecraft"
+    type="required"
     mandatory=true
     versionRange="[1.20.4]"
     ordering="NONE"
