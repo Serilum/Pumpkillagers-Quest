@@ -1,4 +1,4 @@
-package com.natamus.pumpkillagersquest.fabric.mixin;
+package com.natamus.pumpkillagersquest.mixin;
 
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.natamus.pumpkillagersquest.util.Util;

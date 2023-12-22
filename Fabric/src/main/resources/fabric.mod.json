@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "id": "pumpkillagersquest",
-  "version": "3.5",
+  "version": "3.6",
 
   "name": "Pumpkillager's Quest",
   "description": "Help out the Pumpkillager! With custom encounters, cosmetics and a boss fight. A SpookyJam 2022 submission.",
@@ -18,7 +18,7 @@
   "environment": "*",
   "entrypoints": { "main": [ "com.natamus.pumpkillagersquest.ModFabric" ], "client": [ "com.natamus.pumpkillagersquest.ModFabricClient" ], "modmenu": [ "com.natamus.pumpkillagersquest.fabric.config.IntegrateModMenu" ] },
   "mixins": [
-    "pumpkillagersquest_fabric.mixins.json"
+    "pumpkillagersquest.mixins.json"
   ],
 
   "depends": {
@@ -26,7 +26,7 @@
     "fabric": "*",
     "minecraft": ">=1.19",
     "java": ">=17",
-    "collective": ">=7.21"
+    "collective": ">=7.26"
   },
 
   "custom": {
