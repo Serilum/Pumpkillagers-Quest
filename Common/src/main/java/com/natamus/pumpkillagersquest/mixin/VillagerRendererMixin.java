@@ -1,4 +1,4 @@
-package com.natamus.pumpkillagersquest.neoforge.mixin;
+package com.natamus.pumpkillagersquest.mixin;
 
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.natamus.pumpkillagersquest.util.Util;
@@ -14,9 +14,9 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
 @Mixin(value = VillagerRenderer.class, priority = 1001)
 public class VillagerRendererMixin {
-	@Inject(method = "scale(Lnet/minecraft/world/entity/npc/Villager;Lcom/mojang/blaze3d/vertex/PoseStack;F)V", at = @At(value = "HEAD"), cancellable = true)
-	protected void scale(Villager pLivingEntity, PoseStack pMatrixStack, float pPartialTickTime, CallbackInfo ci) {
-		if (Util.isPumpkillager(pLivingEntity)) {
+    @Inject(method = "scale(Lnet/minecraft/world/entity/npc/Villager;Lcom/mojang/blaze3d/vertex/PoseStack;F)V", at = @At(value = "HEAD"), cancellable = true)
+    protected void scale(Villager pLivingEntity, PoseStack pMatrixStack, float pPartialTickTime, CallbackInfo ci) {
+        if (Util.isPumpkillager(pLivingEntity)) {
 			ItemStack footStack = pLivingEntity.getItemBySlot(EquipmentSlot.FEET);
 			if (footStack.getItem().equals(Items.BARRIER)) {
 				String scaleFloatString = footStack.getHoverName().getString();
@@ -28,5 +28,5 @@ public class VillagerRendererMixin {
 				} catch (NumberFormatException ignored) { }
 			}
 		}
-	}
+    }
 }
