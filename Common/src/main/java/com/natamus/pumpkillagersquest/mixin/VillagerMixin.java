@@ -1,4 +1,4 @@
-package com.natamus.pumpkillagersquest.forge.mixin;
+package com.natamus.pumpkillagersquest.mixin;
 
 import com.natamus.pumpkillagersquest.util.Util;
 import net.minecraft.world.damagesource.DamageSource;
