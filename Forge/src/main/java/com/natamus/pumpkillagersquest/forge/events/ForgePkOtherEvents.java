@@ -21,7 +21,7 @@ public class ForgePkOtherEvents {
     @SubscribeEvent
     public void onTNTExplode(ExplosionEvent.Detonate e) {
         Explosion explosion = e.getExplosion();
-        PkOtherEvents.onTNTExplode(e.getLevel(), explosion.getExploder(), explosion);
+        PkOtherEvents.onTNTExplode(e.getLevel(), explosion.getDirectSourceEntity(), explosion);
     }
 
     @SubscribeEvent

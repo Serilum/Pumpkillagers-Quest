@@ -45,30 +45,38 @@ public class PkBlockEvents {
         Block block = state.getBlock();
         if (block instanceof SkullBlock || block instanceof WallSkullBlock) {
             if (!player.isCreative()) {
-                SkullBlockEntity sbe = (SkullBlockEntity) level.getBlockEntity(pos);
-                if (sbe != null) {
-                    GameProfile profile = sbe.getOwnerProfile();
-                    if (profile != null) {
-                        UUID uuid = profile.getId();
-                        if (uuid != null) {
-                            String headid = uuid.toString();
+                BlockEntity posBlockEntity = level.getBlockEntity(pos);
 
-                            String correctheadname = "";
-                            for (String headname : SpookyHeads.allHeadData.keySet()) {
-                                String headnameid = SpookyHeads.allHeadData.get(headname).getFirst();
-                                if (headid.equals(headnameid)) {
-                                    correctheadname = headname;
-                                    break;
+                if (posBlockEntity instanceof SkullBlockEntity) {
+                    SkullBlockEntity skullBlockEntity = (SkullBlockEntity)posBlockEntity;
+
+                    if (skullBlockEntity != null) {
+                        GameProfile profile = skullBlockEntity.getOwnerProfile();
+
+                        if (profile != null) {
+                            UUID uuid = profile.getId();
+
+                            if (uuid != null) {
+                                String headId = uuid.toString();
+
+                                String correctHeadName = "";
+                                for (String headName : SpookyHeads.allHeadData.keySet()) {
+                                    String headNameid = SpookyHeads.allHeadData.get(headName).getFirst();
+
+                                    if (headId.equals(headNameid)) {
+                                        correctHeadName = headName;
+                                        break;
+                                    }
                                 }
-                            }
 
-                            if (!correctheadname.equals("")) {
-                                ItemStack named_headstack = SpookyHeads.getSpookyOrPumpkinHead(correctheadname, 1);
+                                if (!correctHeadName.equals("")) {
+                                    ItemStack namedHeadItemStack = SpookyHeads.getSpookyOrPumpkinHead(correctHeadName, 1);
 
-                                if (named_headstack != null) {
-                                    level.destroyBlock(pos, false);
-                                    level.addFreshEntity(new ItemEntity(level, pos.getX(), pos.getY() + 0.5, pos.getZ(), named_headstack));
-                                    return false;
+                                    if (namedHeadItemStack != null) {
+                                        level.destroyBlock(pos, false);
+                                        level.addFreshEntity(new ItemEntity(level, pos.getX(), pos.getY() + 0.5, pos.getZ(), namedHeadItemStack));
+                                        return false;
+                                    }
                                 }
                             }
                         }

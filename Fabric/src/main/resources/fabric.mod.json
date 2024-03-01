@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "id": "pumpkillagersquest",
-  "version": "3.6",
+  "version": "3.7",
 
   "name": "Pumpkillager's Quest",
   "description": "Help out the Pumpkillager! With custom encounters, cosmetics and a boss fight. A SpookyJam 2022 submission.",
@@ -26,7 +26,7 @@
     "fabric": "*",
     "minecraft": ">=1.20",
     "java": ">=17",
-    "collective": ">=7.26"
+    "collective": ">=7.36"
   },
 
   "custom": {
@@ -44,18 +44,15 @@
 	  "If you would like to contribute too, check out https://ricksouth.com/donate.",
 	  " ",
 	  "Membership sponsors:",
-	  " Adam E",
 	  " Alister",
+	  " Andrean Olgo",
 	  " aternosorg",
 	  " Cherriesaurus",
-	  " FireStriker",
-	  " Greg Johnson",
+	  " Jack",
 	  " Kreezxil",
 	  " Michael W. S.",
 	  " Mir3JonCZ",
-	  " Rebecca Hb.",
 	  " Shana Gitnick",
-	  " silver Bowsman",
 	  " Tyler Behl"
   ]
 }
