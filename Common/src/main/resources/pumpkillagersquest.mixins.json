@@ -4,14 +4,15 @@
   "package": "com.natamus.pumpkillagersquest.mixin",
   "compatibilityLevel": "JAVA_17",
   "mixins": [
-    "VillagerMixin"
+	"ItemEntityMixin",
+	"VillagerMixin"
   ],
   "client": [
-    "VillagerRendererMixin"
+	"VillagerRendererMixin"
   ],
   "server": [
   ],
   "injectors": {
-    "defaultRequire": 1
+	"defaultRequire": 1
   }
 }
