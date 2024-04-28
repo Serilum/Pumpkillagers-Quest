@@ -7,26 +7,19 @@ import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.Level;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
-import net.neoforged.neoforge.event.TickEvent;
+import net.neoforged.neoforge.event.tick.LevelTickEvent;
+import net.neoforged.neoforge.event.tick.PlayerTickEvent;
 
 @EventBusSubscriber
 public class NeoForgePkTickEvents {
 	@SubscribeEvent
-	public static void onLevelTick(TickEvent.LevelTickEvent e) {
-		if (!e.phase.equals(TickEvent.Phase.END)) {
-			return;
-		}
-
-		PkTickEvents.onLevelTick(e.level);
+	public static void onLevelTick(LevelTickEvent.Post e) {
+		PkTickEvents.onLevelTick(e.getLevel());
 	}
 
 	@SubscribeEvent
-	public static void onPlayerTick(TickEvent.PlayerTickEvent e) {
-		if (!e.phase.equals(TickEvent.Phase.END)) {
-			return;
-		}
-
-		Player player = e.player;
+	public static void onPlayerTick(PlayerTickEvent.Post e) {
+		Player player = e.getEntity();
 		Level level = player.level();
 		if (level.isClientSide) {
 			return;
