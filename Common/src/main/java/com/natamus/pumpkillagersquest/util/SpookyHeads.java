@@ -49,7 +49,7 @@ public class SpookyHeads {
 
         for (String pumpkinHeadName : pumpkinHeadData.keySet()) {
             Pair<String, String> pair = pumpkinHeadData.get(pumpkinHeadName);
-            pumpkinHeads.add(HeadFunctions.getTexturedHead(pumpkinHeadName, pair.getSecond(), pair.getFirst(), 1));
+            pumpkinHeads.add(HeadFunctions.getNewTexturedHead(pumpkinHeadName, pair.getSecond(), pair.getFirst(), 1));
         }
 
         return pumpkinHeads;
@@ -57,7 +57,7 @@ public class SpookyHeads {
 
     public static ItemStack getSpookyOrPumpkinHead(String headName, int amount) {
         Pair<String, String> pair = allHeadData.get(headName);
-        return HeadFunctions.getTexturedHead(headName, pair.getSecond(), pair.getFirst(), amount);
+        return HeadFunctions.getNewTexturedHead(headName, pair.getSecond(), pair.getFirst(), amount);
     }
 
     public static ItemStack getPumpkin(Integer amount) {
