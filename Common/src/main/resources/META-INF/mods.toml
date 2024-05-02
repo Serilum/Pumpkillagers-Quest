@@ -6,7 +6,7 @@ logoFile="icon.png"
 
 [[mods]]
 modId="pumpkillagersquest"
-version="3.8"
+version="3.9"
 displayName="Pumpkillager's Quest"
 displayURL="https://serilum.com/mod/pumpkillagers-quest"
 authors="Rick South"
@@ -22,7 +22,7 @@ If you would like to contribute too, check out https://serilum.com/donate. Appre
 [[dependencies.pumpkillagersquest]]
     modId="collective"
     mandatory=true
-    versionRange="[7.54,)"
+    versionRange="[7.55,)"
     ordering="NONE"
     side="BOTH"
 
