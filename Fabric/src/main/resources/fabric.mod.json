@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "id": "pumpkillagersquest",
-  "version": "3.9",
+  "version": "4.1",
 
   "name": "Pumpkillager's Quest",
   "description": "Help out the Pumpkillager! With custom encounters, cosmetics and a boss fight. A SpookyJam 2022 submission.",
@@ -26,7 +26,7 @@
     "fabric": "*",
     "minecraft": ">=1.20",
     "java": ">=21",
-    "collective": ">=7.55"
+    "collective": ">=7.60"
   },
 
   "custom": {
@@ -49,10 +49,9 @@
 	  " aternosorg",
 	  " BirdieMiner",
 	  " Cherriesaurus",
-	  " Jack",
 	  " Jeremy Langford",
 	  " Michael W. S.",
-	  " pepe1191",
+	  " Rare Students",
 	  " Shana Gitnick",
 	  " Tyler Behl"
   ]

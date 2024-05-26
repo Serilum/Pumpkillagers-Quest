@@ -10,7 +10,7 @@ import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.neoforge.event.entity.EntityJoinLevelEvent;
 import net.neoforged.neoforge.event.entity.EntityLeaveLevelEvent;
 import net.neoforged.neoforge.event.entity.EntityStruckByLightningEvent;
-import net.neoforged.neoforge.event.entity.player.EntityItemPickupEvent;
+import net.neoforged.neoforge.event.entity.player.ItemEntityPickupEvent;
 
 @EventBusSubscriber
 public class NeoForgePkEntityEvents {
@@ -32,9 +32,9 @@ public class NeoForgePkEntityEvents {
 	}
 
 	@SubscribeEvent
-	public static void onItemPickup(EntityItemPickupEvent e) {
-		Player player = e.getEntity();
-		PkEntityEvents.onItemPickup(player.level(), player, e.getItem().getItem());
+	public static void onItemPickup(ItemEntityPickupEvent.Post e) {
+		Player player = e.getPlayer();
+		PkEntityEvents.onItemPickup(player.level(), player, e.getItemEntity().getItem());
 	}
 
 	@SubscribeEvent
