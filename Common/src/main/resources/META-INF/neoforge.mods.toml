@@ -6,7 +6,7 @@ logoFile="icon.png"
 
 [[mods]]
 modId="pumpkillagersquest"
-version="4.1"
+version="4.2"
 displayName="Pumpkillager's Quest"
 displayURL="https://serilum.com/mod/pumpkillagers-quest"
 authors="Rick South"
@@ -14,7 +14,7 @@ description='''Help out the Pumpkillager! With custom encounters, cosmetics and 
 '''
 credits='''Thank you very much to my Membership sponsors for supporting the development of this mod:  
 
-Alister, Andrean Olgo, aternosorg, BirdieMiner, Cherriesaurus, Jeremy Langford, Michael W. S., Rare Students, Shana Gitnick, Tyler Behl   
+Alister, Andrean Olgo, aternosorg, BirdieMiner, Cherriesaurus, Michael W. S., Shana Gitnick, Sukhmai, Tyler Behl   
 
 If you would like to contribute too, check out https://serilum.com/donate. Appreciate it! <3   
 '''
@@ -22,7 +22,7 @@ If you would like to contribute too, check out https://serilum.com/donate. Appre
 [[dependencies.pumpkillagersquest]]
     modId="collective"
     type="required"
-    versionRange="[7.61,)"
+    versionRange="[7.64,)"
     ordering="NONE"
     side="BOTH"
 
@@ -36,7 +36,7 @@ If you would like to contribute too, check out https://serilum.com/donate. Appre
 [[dependencies.pumpkillagersquest]]
     modId="neoforge"
     type="required"
-    versionRange="[20.6.78,)"
+    versionRange="[21.0.31,)"
     ordering="NONE"
     side="BOTH"
 
