@@ -2,6 +2,7 @@ package com.natamus.pumpkillagersquest.util;
 
 import com.mojang.datafixers.util.Pair;
 import com.natamus.collective.functions.HeadFunctions;
+import net.minecraft.network.chat.Component;
 import net.minecraft.world.item.ItemStack;
 
 import java.util.ArrayList;
@@ -35,7 +36,7 @@ public class SpookyHeads {
         spookyHeadData.put("Pumpkin", new Pair<String, String>("f441b2e7-7b8a-42f8-8a32-3fe2a4e2d3d4", "eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvNzg0ZjVhZGNmMDQ4MDA1NWY5NjllMjBhMjg0ZDc1NDRlM2UxOWVmMzQwYTAzN2M2OGQ2ZTY1OWI3ZmE0OTEyOSJ9fX0="));
         spookyHeadData.put("Carved Pumpkin", new Pair<String, String>("4bf6db5f-f623-4e1f-88f6-aaac74588c12", "eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvNTNhZDc5MjA3YzNmOGJiZjRiMWQ1MzJjZmU4NmRjY2I1N2QyYzk3YWVlYjUxZWYwMGE2NjBhZmRjZWFiNWZhOSJ9fX0="));
         spookyHeadData.put("Jack o'Lantern", new Pair<String, String>("775d50d9-f87d-42be-b3eb-f435beb60ff9", "eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvYTFkNWQxMmE4YjUyMGNiNTdiZDlkMTAwNTkwMjBkYTEzOTQ4NTMyNDcyMGUwZDUxODgwZWU4NDE5NWRmZGNlMiJ9fX0="));
-        spookyHeadData.put("Pumpkillager's Head", new Pair<String, String>("b89788b1-f84f-4e54-854d-cc84ede0d3d3", "eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvY2I2ODY1ZmE3YTJhMTc3NTk3NzQzYmUyMzAzZDY4YmRlZTYzNjBhZWEyOTQ1YzQ3MWQ4MjU1Y2JlNDYifX19"));
+        spookyHeadData.put("Pumpkillager Head", new Pair<String, String>("b89788b1-f84f-4e54-854d-cc84ede0d3d3", "eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvY2I2ODY1ZmE3YTJhMTc3NTk3NzQzYmUyMzAzZDY4YmRlZTYzNjBhZWEyOTQ1YzQ3MWQ4MjU1Y2JlNDYifX19"));
         spookyHeadData.put("Ghost Knight Head", new Pair<String, String>("69198f1e-3f26-4866-b786-836e6b0957d9", "eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvOWJhYTQxZTI2MDI2MmU1ZjRjOTFlZmVmNzNiYjJmNWI5Y2Y3NTY0OTE1MDE3NDkwNzQ2ZGM4Y2JhYWZjODE1YiJ9fX0="));
         spookyHeadData.put("Ghost Rider Head", new Pair<String, String>("573f4ccd-f570-4adc-b179-b9d24a76f6be", "eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvYjBmZGRlZDcxN2Q3OWE3ZjljYTM3ZmQxODdkMGViNDM4ZTIyNGQzMjY5ZGUzOTJlZDRlOTgyYWNjMTlkMWQzIn19fQ=="));
         spookyHeadData.put("Golden Horse Head", new Pair<String, String>("4ae3e5dd-8b53-40ec-b580-3235cc633414", "eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvN2Q4ODY0M2IwNDg2Nzk2MjRhNDJlZTA0NjY2YTQ4NjVlYzE2ODcxYzczMjc5NzM0NjVhZjZiZDVhYmRkOGNhNyJ9fX0="));
@@ -49,7 +50,11 @@ public class SpookyHeads {
 
         for (String pumpkinHeadName : pumpkinHeadData.keySet()) {
             Pair<String, String> pair = pumpkinHeadData.get(pumpkinHeadName);
-            pumpkinHeads.add(HeadFunctions.getNewTexturedHead(pumpkinHeadName, pair.getSecond(), pair.getFirst(), 1));
+
+            ItemStack headStack = HeadFunctions.getNewTexturedHead(pumpkinHeadName.replace(" Head", ""), pair.getSecond(), pair.getFirst(), 1);
+            headStack.setHoverName(Component.literal(pumpkinHeadName));
+
+            pumpkinHeads.add(headStack);
         }
 
         return pumpkinHeads;
@@ -57,7 +62,11 @@ public class SpookyHeads {
 
     public static ItemStack getSpookyOrPumpkinHead(String headName, int amount) {
         Pair<String, String> pair = allHeadData.get(headName);
-        return HeadFunctions.getNewTexturedHead(headName, pair.getSecond(), pair.getFirst(), amount);
+
+        ItemStack headStack = HeadFunctions.getNewTexturedHead(headName.replace(" Head", ""), pair.getSecond(), pair.getFirst(), amount);
+        headStack.setHoverName(Component.literal(headName));
+
+        return headStack;
     }
 
     public static ItemStack getPumpkin(Integer amount) {
@@ -70,7 +79,7 @@ public class SpookyHeads {
         return getSpookyOrPumpkinHead("Jack o'Lantern", amount);
     }
     public static ItemStack getEvilJackoLantern(Integer amount) {
-        return getSpookyOrPumpkinHead("Pumpkillager's Head", amount);
+        return getSpookyOrPumpkinHead("Pumpkillager Head", amount);
     }
     public static ItemStack getGhostKnightHead(Integer amount) {
         return getSpookyOrPumpkinHead("Ghost Knight Head", amount);
