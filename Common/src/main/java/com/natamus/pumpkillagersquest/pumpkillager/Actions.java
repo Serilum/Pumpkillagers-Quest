@@ -1,7 +1,6 @@
 package com.natamus.pumpkillagersquest.pumpkillager;
 
 import com.mojang.datafixers.util.Pair;
-import com.natamus.collective.functions.UtilityFunctions;
 import com.natamus.pumpkillagersquest.config.ConfigHandler;
 import com.natamus.pumpkillagersquest.services.Services;
 import com.natamus.pumpkillagersquest.util.*;
@@ -121,7 +120,7 @@ public class Actions {
 
             Vec3 pvec = prisoner.position();
 
-            level.explode(null, UtilityFunctions.createDamageSource("explosion"), null, pvec.x, pvec.y, pvec.z, 3.0f, false, Level.ExplosionInteraction.NONE);
+            level.explode(null, level.damageSources().explosion(null, null), null, pvec.x, pvec.y, pvec.z, 3.0f, false, Level.ExplosionInteraction.NONE);
 
             Conversations.startTalking(level, prisoner, player, 6);
         }).start();
@@ -130,7 +129,7 @@ public class Actions {
     public static void startFinalBossSequence(Level level, Player player, BlockPos centerPos, List<Pair<BlockPos, BlockState>> candlePositions) {
         Vec3 centerVec = new Vec3(centerPos.getX() + 0.5, centerPos.getY(), centerPos.getZ()+0.5);
 
-        level.explode(null, UtilityFunctions.createDamageSource("explosion"), null, centerVec.x, centerVec.y, centerVec.z, 3.0f, false, Level.ExplosionInteraction.NONE);
+        level.explode(null, level.damageSources().explosion(null, null), null, centerVec.x, centerVec.y, centerVec.z, 3.0f, false, Level.ExplosionInteraction.NONE);
         level.setBlock(centerPos, Blocks.AIR.defaultBlockState(), 3);
 
         for (Pair<BlockPos, BlockState> candlePair : candlePositions) {
@@ -273,7 +272,7 @@ public class Actions {
 
         level.addFreshEntity(prisoner);
 
-        level.explode(null, UtilityFunctions.createDamageSource("explosion"), null, prisonerVec.x, prisonerVec.y, prisonerVec.z, 3.0f, false, Level.ExplosionInteraction.NONE);
+        level.explode(null, level.damageSources().explosion(null, null), null, prisonerVec.x, prisonerVec.y, prisonerVec.z, 3.0f, false, Level.ExplosionInteraction.NONE);
 
         if (!level.isClientSide) {
             ExperienceOrb.award((ServerLevel)level, new Vec3(pumpkillagerPos.getX()+0.5, pumpkillagerPos.getY(), pumpkillagerPos.getZ()+0.5), ConfigHandler.experienceAmountRewardFinalBoss);
