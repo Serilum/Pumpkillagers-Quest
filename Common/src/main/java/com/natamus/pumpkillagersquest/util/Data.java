@@ -106,7 +106,7 @@ public class Data {
             Optional<ItemStack> questBookOptional = ItemStack.parse(level.registryAccess(), newnbt);
             if (questBookOptional.isPresent()) {
                 ItemStack questBook = questBookOptional.get();
-                questBook.set(DataComponents.CUSTOM_NAME, Component.translatable(questBookName).withStyle(ChatFormatting.YELLOW));
+                questBook.set(DataComponents.CUSTOM_NAME, Component.translatable(stopPkBookName).withStyle(ChatFormatting.YELLOW));
 
                 return questBook;
             }
