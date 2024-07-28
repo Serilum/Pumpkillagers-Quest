@@ -1,6 +1,7 @@
 package com.natamus.pumpkillagersquest;
 
 import com.natamus.collective.check.RegisterMod;
+import com.natamus.collective.check.ShouldLoadCheck;
 import com.natamus.pumpkillagersquest.neoforge.config.IntegrateNeoForgeConfig;
 import com.natamus.pumpkillagersquest.neoforge.events.*;
 import com.natamus.pumpkillagersquest.neoforge.events.rendering.NeoForgeClientRenderEvent;
@@ -17,6 +18,10 @@ import net.neoforged.fml.loading.FMLEnvironment;
 public class ModNeoForge {
 	
 	public ModNeoForge(IEventBus modEventBus) {
+		if (!ShouldLoadCheck.shouldLoad(Reference.MOD_ID)) {
+			return;
+		}
+
 		modEventBus.addListener(this::loadComplete);
 
 		setGlobalConstants();
