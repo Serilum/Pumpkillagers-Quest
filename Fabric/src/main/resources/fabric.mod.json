@@ -1,0 +1,56 @@
+{
+  "schemaVersion": 1,
+  "id": "pumpkillagersquest",
+  "version": "4.4",
+
+  "name": "Pumpkillager's Quest",
+  "description": "Help out the Pumpkillager! With custom encounters, cosmetics and a boss fight. A SpookyJam 2022 submission.",
+  "authors": [ "Rick South" ],
+  "contact": {
+    "homepage": "https://serilum.com/mod/pumpkillagers-quest",
+    "sources": "https://github.com/Serilum/Pumpkillagers-Quest",
+    "issues": "https://github.com/Serilum/.issue-tracker/labels/Mod:%20Pumpkillager%27s%20Quest"
+  },
+
+  "license": "All Right Reserved",
+  "icon": "icon.png",
+
+  "environment": "*",
+  "entrypoints": { "main": [ "com.natamus.pumpkillagersquest.ModFabric" ], "client": [ "com.natamus.pumpkillagersquest.ModFabricClient" ], "modmenu": [ "com.natamus.pumpkillagersquest.fabric.config.IntegrateModMenu" ] },
+  "mixins": [
+    "pumpkillagersquest.mixins.json"
+  ],
+
+  "depends": {
+    "fabricloader": ">=0.15.0",
+    "fabric": "*",
+    "minecraft": ">=1.21",
+    "java": ">=21",
+    "collective": ">=7.80"
+  },
+
+  "custom": {
+    "modmenu": {
+      "links": {
+        "Donate <3" : "https://ricksouth.com/donate"
+      }
+    }
+  },
+
+  "contributors": [
+	  " ",
+	  "Thank you very much to my Membership sponsors for supporting the development of this mod!",
+	  " ",
+	  "If you would like to contribute too, check out https://serilum.com/donate.",
+	  " ",
+	  "Membership sponsors:",
+	  " Alister",
+	  " Andrean Olgo",
+	  " aternosorg",
+	  " Cherriesaurus",
+	  " Michael W. S.",
+	  " Nahuel Fernandez",
+	  " Shana Gitnick",
+	  " Tyler Behl"
+  ]
+}
