@@ -1,0 +1,18 @@
+{
+  "required": true,
+  "minVersion": "0.8",
+  "package": "com.natamus.pumpkillagersquest.mixin",
+  "compatibilityLevel": "JAVA_21",
+  "mixins": [
+	"ItemEntityMixin",
+	"VillagerMixin"
+  ],
+  "client": [
+	"VillagerRendererMixin"
+  ],
+  "server": [
+  ],
+  "injectors": {
+	"defaultRequire": 1
+  }
+}
