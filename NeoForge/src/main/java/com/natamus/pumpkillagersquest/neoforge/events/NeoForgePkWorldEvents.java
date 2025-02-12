@@ -5,10 +5,8 @@ import com.natamus.pumpkillagersquest.events.PkWorldEvents;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.level.Level;
 import net.neoforged.bus.api.SubscribeEvent;
-import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.neoforge.event.level.LevelEvent;
 
-@EventBusSubscriber
 public class NeoForgePkWorldEvents {
 	@SubscribeEvent
 	public static void onWorldUnload(LevelEvent.Unload e) {
