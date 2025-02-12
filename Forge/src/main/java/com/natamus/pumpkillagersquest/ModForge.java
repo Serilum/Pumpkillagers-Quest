@@ -35,18 +35,18 @@ public class ModForge {
 	}
 
 	private void loadComplete(final FMLLoadCompleteEvent event) {
-		MinecraftForge.EVENT_BUS.register(new ForgePkAttackEvents());
-		MinecraftForge.EVENT_BUS.register(new ForgePkBlockEvents());
-		MinecraftForge.EVENT_BUS.register(new ForgePkEntityEvents());
-		MinecraftForge.EVENT_BUS.register(new ForgePkLivingEvents());
-		MinecraftForge.EVENT_BUS.register(new ForgePkOtherEvents());
-		MinecraftForge.EVENT_BUS.register(new ForgePkPlayerEvents());
-		MinecraftForge.EVENT_BUS.register(new ForgePkTickEvents());
-		MinecraftForge.EVENT_BUS.register(new ForgePkWorldEvents());
+		MinecraftForge.EVENT_BUS.register(ForgePkAttackEvents.class);
+		MinecraftForge.EVENT_BUS.register(ForgePkBlockEvents.class);
+		MinecraftForge.EVENT_BUS.register(ForgePkEntityEvents.class);
+		MinecraftForge.EVENT_BUS.register(ForgePkLivingEvents.class);
+		MinecraftForge.EVENT_BUS.register(ForgePkOtherEvents.class);
+		MinecraftForge.EVENT_BUS.register(ForgePkPlayerEvents.class);
+		MinecraftForge.EVENT_BUS.register(ForgePkTickEvents.class);
+		MinecraftForge.EVENT_BUS.register(ForgePkWorldEvents.class);
 
 		if (FMLEnvironment.dist.equals(Dist.CLIENT)) {
-			MinecraftForge.EVENT_BUS.register(new ForgeClientRenderEvent());
-			MinecraftForge.EVENT_BUS.register(new ForgePkSoundEvents());
+			MinecraftForge.EVENT_BUS.register(ForgeClientRenderEvent.class);
+			MinecraftForge.EVENT_BUS.register(ForgePkSoundEvents.class);
 		}
 	}
 

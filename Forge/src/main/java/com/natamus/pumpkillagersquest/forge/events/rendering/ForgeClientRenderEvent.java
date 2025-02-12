@@ -5,12 +5,10 @@ import com.natamus.pumpkillagersquest.events.rendering.ClientRenderEvent;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.event.TickEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
-import net.minecraftforge.fml.common.Mod.EventBusSubscriber;
 
-@EventBusSubscriber(value = Dist.CLIENT)
 public class ForgeClientRenderEvent {
 	@SubscribeEvent
-	public void onClientTick(TickEvent.ClientTickEvent e) {
+	public static void onClientTick(TickEvent.ClientTickEvent e) {
 		if (!e.phase.equals(TickEvent.Phase.START)) {
 			return;
 		}

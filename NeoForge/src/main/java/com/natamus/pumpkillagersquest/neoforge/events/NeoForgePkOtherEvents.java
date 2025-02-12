@@ -6,12 +6,10 @@ import com.natamus.pumpkillagersquest.events.PkOtherEvents;
 import net.minecraft.world.level.Explosion;
 import net.minecraft.world.level.Level;
 import net.neoforged.bus.api.SubscribeEvent;
-import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.neoforge.event.RegisterCommandsEvent;
 import net.neoforged.neoforge.event.level.ExplosionEvent;
 import net.neoforged.neoforge.event.level.PistonEvent;
 
-@EventBusSubscriber
 public class NeoForgePkOtherEvents {
 	@SubscribeEvent
 	public static void registerCommands(RegisterCommandsEvent e) {

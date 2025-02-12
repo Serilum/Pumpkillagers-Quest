@@ -6,13 +6,11 @@ import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.Level;
 import net.neoforged.bus.api.SubscribeEvent;
-import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.neoforge.event.entity.EntityJoinLevelEvent;
 import net.neoforged.neoforge.event.entity.EntityLeaveLevelEvent;
 import net.neoforged.neoforge.event.entity.EntityStruckByLightningEvent;
 import net.neoforged.neoforge.event.entity.player.ItemEntityPickupEvent;
 
-@EventBusSubscriber
 public class NeoForgePkEntityEvents {
 	@SubscribeEvent
 	public static void onEntityJoin(EntityJoinLevelEvent e) {

@@ -3,10 +3,8 @@ package com.natamus.pumpkillagersquest.neoforge.events;
 import com.natamus.pumpkillagersquest.events.PkPlayerEvents;
 import net.minecraft.world.InteractionResult;
 import net.neoforged.bus.api.SubscribeEvent;
-import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.neoforge.event.entity.player.PlayerInteractEvent;
 
-@EventBusSubscriber
 public class NeoForgePkPlayerEvents {
 	@SubscribeEvent
 	public static void onCharacterInteract(PlayerInteractEvent.EntityInteract e) {
