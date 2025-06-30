@@ -11,21 +11,20 @@ import net.minecraftforge.event.level.PistonEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 
-@Mod.EventBusSubscriber
 public class ForgePkOtherEvents {
     @SubscribeEvent
-    public void registerCommands(RegisterCommandsEvent e) {
+    public static void registerCommands(RegisterCommandsEvent e) {
         CommandPumpkillager.register(e.getDispatcher());
     }
 
     @SubscribeEvent
-    public void onTNTExplode(ExplosionEvent.Detonate e) {
+    public static void onTNTExplode(ExplosionEvent.Detonate e) {
         Explosion explosion = e.getExplosion();
         PkOtherEvents.onTNTExplode(e.getLevel(), explosion.getExploder(), explosion);
     }
 
     @SubscribeEvent
-    public void onPistonMove(PistonEvent.Pre e) {
+    public static void onPistonMove(PistonEvent.Pre e) {
         Level level = WorldFunctions.getWorldIfInstanceOfAndNotRemote(e.getLevel());
         if (level == null) {
             return;

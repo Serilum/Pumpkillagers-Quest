@@ -11,10 +11,9 @@ import net.minecraftforge.event.level.BlockEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 
-@Mod.EventBusSubscriber
 public class ForgePkBlockEvents {
     @SubscribeEvent
-    public void onBlockBreak(BlockEvent.BreakEvent e) {
+    public static void onBlockBreak(BlockEvent.BreakEvent e) {
         Level level = WorldFunctions.getWorldIfInstanceOfAndNotRemote(e.getLevel());
         if (level.isClientSide) {
             return;
@@ -26,7 +25,7 @@ public class ForgePkBlockEvents {
     }
 
     @SubscribeEvent
-    public void onCandleClick(PlayerInteractEvent.RightClickBlock e) {
+    public static void onCandleClick(PlayerInteractEvent.RightClickBlock e) {
         if (!PkBlockEvents.onCandleClick(e.getLevel(), e.getEntity(), e.getHand(), e.getPos(), e.getHitVec())) {
             e.setCanceled(true);
             e.setCancellationResult(InteractionResult.FAIL);
@@ -34,7 +33,7 @@ public class ForgePkBlockEvents {
     }
 
     @SubscribeEvent
-    public void onBlockPlace(BlockEvent.EntityPlaceEvent e) {
+    public static void onBlockPlace(BlockEvent.EntityPlaceEvent e) {
         Level level = WorldFunctions.getWorldIfInstanceOfAndNotRemote(e.getLevel());
         if (level == null) {
             return;

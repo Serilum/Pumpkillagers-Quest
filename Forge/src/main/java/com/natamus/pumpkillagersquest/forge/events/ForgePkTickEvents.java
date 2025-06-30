@@ -9,10 +9,9 @@ import net.minecraftforge.event.TickEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 
-@Mod.EventBusSubscriber
 public class ForgePkTickEvents {
     @SubscribeEvent
-    public void onLevelTick(TickEvent.LevelTickEvent e) {
+    public static void onLevelTick(TickEvent.LevelTickEvent e) {
         if (!e.phase.equals(TickEvent.Phase.END)) {
             return;
         }
@@ -21,7 +20,7 @@ public class ForgePkTickEvents {
     }
 
     @SubscribeEvent
-    public void onPlayerTick(TickEvent.PlayerTickEvent e) {
+    public static void onPlayerTick(TickEvent.PlayerTickEvent e) {
         if (!e.phase.equals(TickEvent.Phase.END)) {
             return;
         }
