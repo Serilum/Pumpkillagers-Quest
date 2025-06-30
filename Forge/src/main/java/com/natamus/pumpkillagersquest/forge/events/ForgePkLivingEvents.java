@@ -8,10 +8,9 @@ import net.minecraftforge.event.entity.living.LivingHurtEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 
-@Mod.EventBusSubscriber
 public class ForgePkLivingEvents {
     @SubscribeEvent
-    public void onDamagePumpkillager(LivingHurtEvent e) {
+    public static void onDamagePumpkillager(LivingHurtEvent e) {
         LivingEntity livingEntity = e.getEntity();
 
         float damageAmount = e.getAmount();
@@ -27,14 +26,14 @@ public class ForgePkLivingEvents {
     }
 
     @SubscribeEvent
-    public void onLivingDeath(LivingDeathEvent e) {
+    public static void onLivingDeath(LivingDeathEvent e) {
         if (!PkLivingEvents.onLivingDeath(e.getEntity(), e.getSource(), 0F)) {
             e.setCanceled(true);
         }
     }
 
     @SubscribeEvent
-    public void onEntityItemDrop(LivingDropsEvent e) {
+    public static void onEntityItemDrop(LivingDropsEvent e) {
         LivingEntity livingEntity = e.getEntity();
         PkLivingEvents.onEntityItemDrop(livingEntity.level(), livingEntity, e.getSource());
     }

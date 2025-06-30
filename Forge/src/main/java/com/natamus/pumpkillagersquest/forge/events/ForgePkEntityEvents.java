@@ -12,10 +12,9 @@ import net.minecraftforge.event.entity.player.EntityItemPickupEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 
-@Mod.EventBusSubscriber
 public class ForgePkEntityEvents {
     @SubscribeEvent
-    public void onEntityJoin(EntityJoinLevelEvent e) {
+    public static void onEntityJoin(EntityJoinLevelEvent e) {
         Level level = e.getLevel();
         if (level.isClientSide) {
             return;
@@ -27,18 +26,18 @@ public class ForgePkEntityEvents {
     }
 
     @SubscribeEvent
-    public void onEntityLeave(EntityLeaveLevelEvent e) {
+    public static void onEntityLeave(EntityLeaveLevelEvent e) {
         PkEntityEvents.onEntityLeave(e.getEntity(), e.getLevel());
     }
 
     @SubscribeEvent
-    public void onItemPickup(EntityItemPickupEvent e) {
+    public static void onItemPickup(EntityItemPickupEvent e) {
         Player player = e.getEntity();
         PkEntityEvents.onItemPickup(player.level(), player, e.getItem().getItem());
     }
 
     @SubscribeEvent
-    public void onEntityHitByLightning(EntityStruckByLightningEvent e) {
+    public static void onEntityHitByLightning(EntityStruckByLightningEvent e) {
         Entity entity = e.getEntity();
         if (!PkEntityEvents.onEntityHitByLightning(entity.level(), entity, e.getLightning())) {
             e.setCanceled(true);

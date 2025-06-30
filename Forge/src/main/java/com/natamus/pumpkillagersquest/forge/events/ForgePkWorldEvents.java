@@ -8,10 +8,9 @@ import net.minecraftforge.event.level.LevelEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 
-@Mod.EventBusSubscriber
 public class ForgePkWorldEvents {
     @SubscribeEvent
-    public void onWorldUnload(LevelEvent.Unload e) {
+    public static void onWorldUnload(LevelEvent.Unload e) {
         Level level = WorldFunctions.getWorldIfInstanceOfAndNotRemote(e.getLevel());
         if (level == null) {
             return;
