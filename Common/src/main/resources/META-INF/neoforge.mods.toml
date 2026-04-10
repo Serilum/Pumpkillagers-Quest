@@ -1,0 +1,37 @@
+modLoader="javafml"
+loaderVersion="*"
+license="All rights reserved"
+issueTrackerURL="https://github.com/Serilum/.issue-tracker/labels/Mod:%20Pumpkillager%27s%20Quest"
+logoFile="icon.png"
+
+[[mods]]
+modId="pumpkillagersquest"
+version="5.0"
+displayName="Pumpkillager's Quest"
+displayURL="https://serilum.com/mod/pumpkillagers-quest"
+authors="Rick South"
+description='''Help out the Pumpkillager! With custom encounters, cosmetics and a boss fight. A SpookyJam 2022 submission.
+'''
+credits='''Thank you very much to my Membership sponsors for supporting the development of this mod:  
+
+akanealw, Alister, Andrean Olgo, aternosorg, Cherriesaurus, MWS, t128, Tyler Behl, XAgent, ตัวตรึง พระนคร   
+
+If you would like to contribute too, check out https://serilum.com/donate. Appreciate it! <3   
+'''
+
+[[dependencies.pumpkillagersquest]]
+    modId="collective"
+    type="required"
+    versionRange="[8.17,)"
+    ordering="NONE"
+    side="BOTH"
+
+[[dependencies.pumpkillagersquest]]
+    modId="minecraft"
+    type="required"
+    versionRange="[26.1.2]"
+    ordering="NONE"
+    side="BOTH"
+
+[[mixins]]
+    config = "pumpkillagersquest.mixins.json"
