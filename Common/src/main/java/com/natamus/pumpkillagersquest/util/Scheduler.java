@@ -1,4 +1,5 @@
 package com.natamus.pumpkillagersquest.util;
+import com.natamus.pumpkillagersquest.util.Reference;
 
 import com.mojang.datafixers.util.Pair;
 import com.natamus.collective.functions.ItemFunctions;
@@ -83,7 +84,7 @@ public class Scheduler {
                                 itemName = itemStack.getHoverName().getString();
                             }
 
-                            Data.messagesToSend.get(level).add(Conversations.createMessagePair(player, Component.translatable("You have been given " + itemName + ".").withStyle(ChatFormatting.GRAY)));
+                            Data.messagesToSend.get(level).add(Conversations.createMessagePair(player, Component.translatable("collective.pumpkillagersquest.message.givenitem", itemName).withStyle(ChatFormatting.GRAY)));
                             ItemFunctions.giveOrDropItemStack(messagePair.getFirst(), itemStack);
                         }
                         case "wear" -> {

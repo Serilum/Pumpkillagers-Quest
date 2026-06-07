@@ -1,4 +1,5 @@
 package com.natamus.pumpkillagersquest.util;
+import com.natamus.pumpkillagersquest.util.Reference;
 
 import com.mojang.datafixers.util.Pair;
 import com.natamus.collective.data.GlobalVariables;
@@ -97,7 +98,7 @@ public class GenerateStructure {
                         ChestBlockEntity chestBlockEntity = new ChestBlockEntity(blockPos, blockEntity.getBlockState());
 
                         DataComponentMap.Builder dataComponentMapBuilder = DataComponentMap.builder();
-                        dataComponentMapBuilder.set(DataComponents.CUSTOM_NAME, Component.literal("Ritual Storage"));
+                        dataComponentMapBuilder.set(DataComponents.CUSTOM_NAME, Component.translatable("collective.pumpkillagersquest.gui.ritualstorage"));
                         chestBlockEntity.setComponents(dataComponentMapBuilder.build());
 
                         Collections.shuffle(pumpkinHeads);
@@ -162,7 +163,7 @@ public class GenerateStructure {
                     }
                     ghostKnight.setItemSlot(EquipmentSlot.HEAD, SpookyHeads.getGhostKnightHead(1));
                     ghostKnight.setPos(ghostKnightPos.getX() + 0.5, ghostKnightPos.getY(), ghostKnightPos.getZ() + 0.5);
-                    ghostKnight.setCustomName(Component.literal("The Ghost Knight").withStyle(ChatFormatting.GOLD));
+                    ghostKnight.setCustomName(Component.translatable("collective.pumpkillagersquest.gui.ghostknight").withStyle(ChatFormatting.GOLD));
 
                     level.addFreshEntity(ghostKnightHorse);
                     level.addFreshEntity(ghostKnight);
@@ -189,7 +190,7 @@ public class GenerateStructure {
                     }
                     ghostRider.setItemSlot(EquipmentSlot.HEAD, SpookyHeads.getGhostRiderHead(1));
                     ghostRider.setPos(ghostKnightPos.getX() + 0.5, ghostRiderPos.getY(), ghostKnightPos.getZ() + 0.5);
-                    ghostRider.setCustomName(Component.literal("The Ghost Rider").withStyle(ChatFormatting.GOLD));
+                    ghostRider.setCustomName(Component.translatable("collective.pumpkillagersquest.gui.ghostrider").withStyle(ChatFormatting.GOLD));
 
                     level.addFreshEntity(ghostRiderHorse);
                     level.addFreshEntity(ghostRider);
