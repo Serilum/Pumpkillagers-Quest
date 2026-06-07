@@ -32,7 +32,7 @@ public class CommandPumpkillager {
 							deletedCount += 1;
 						}
 					}
-					MessageFunctions.sendMessage(source, "Successfully deleted " + deletedCount + " pumpkillager tags for " + entity.getName().getString() + ".", ChatFormatting.DARK_GREEN);
+					MessageFunctions.sendTranslatableMessage(source, "collective.pumpkillagersquest.message.successfullydeletedpumpkillager", ChatFormatting.DARK_GREEN, deletedCount, entity.getName().getString());
 				}
 				return 1;
 			})))
@@ -47,10 +47,10 @@ public class CommandPumpkillager {
 
 					ItemFunctions.giveOrDropItemStack(player, Data.getQuestbook());
 
-					MessageFunctions.sendMessage(player, "You have been given the 'Pumpkillager's Quest' book.", ChatFormatting.DARK_GREEN);
+					MessageFunctions.sendTranslatableMessage(player, "collective.pumpkillagersquest.message.givenbook", ChatFormatting.DARK_GREEN, Reference.NAME);
 				}
 				catch (CommandSyntaxException ex) {
-					MessageFunctions.sendMessage(source, "This command can only be executed as a player in-game.", ChatFormatting.RED);
+					MessageFunctions.sendTranslatableMessage(source, "collective.shared.message.playeronly", ChatFormatting.RED);
 					return 0;
 				}
 
@@ -67,10 +67,10 @@ public class CommandPumpkillager {
 
 					ItemFunctions.giveOrDropItemStack(player, Data.getStopPkbook());
 
-					MessageFunctions.sendMessage(player, "You have been given the 'Stopping the Pumpkillager' book.", ChatFormatting.DARK_GREEN);
+					MessageFunctions.sendTranslatableMessage(player, "collective.pumpkillagersquest.message.givenstoppingpumpkillager", ChatFormatting.DARK_GREEN);
 				}
 				catch (CommandSyntaxException ex) {
-					MessageFunctions.sendMessage(source, "This command can only be executed as a player in-game.", ChatFormatting.RED);
+					MessageFunctions.sendTranslatableMessage(source, "collective.shared.message.playeronly", ChatFormatting.RED);
 					return 0;
 				}
 

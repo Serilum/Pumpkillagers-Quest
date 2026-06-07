@@ -162,7 +162,7 @@ public class Conversations {
 
     public static void postFinalPrisonerConversation(Level level, Villager prisoner, Player targetPlayer) { // 9
         ItemStack rewardStack = new ItemStack(Items.NETHERITE_SWORD, 1);
-        rewardStack.setHoverName(Component.literal("Pumpkalibur").withStyle(ChatFormatting.GOLD));
+        rewardStack.setHoverName(Component.translatable("collective.pumpkillagersquest.gui.pumpkalibur").withStyle(ChatFormatting.GOLD));
         rewardStack.enchant(Enchantments.SHARPNESS, 4);
         rewardStack.enchant(Enchantments.SWEEPING_EDGE, 3);
 
