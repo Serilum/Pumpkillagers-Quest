@@ -168,7 +168,7 @@ public class Conversations {
         Registry<Enchantment> enchantmentsRegistry = level.registryAccess().lookupOrThrow(Registries.ENCHANTMENT);
 
         ItemStack rewardStack = new ItemStack(Items.NETHERITE_SWORD, 1);
-        rewardStack.set(DataComponents.CUSTOM_NAME, Component.literal("Pumpkalibur").withStyle(ChatFormatting.GOLD));
+        rewardStack.set(DataComponents.CUSTOM_NAME, Component.translatable("collective.pumpkillagersquest.gui.pumpkalibur").withStyle(ChatFormatting.GOLD));
         rewardStack.enchant(enchantmentsRegistry.getOrThrow(Enchantments.SHARPNESS), 4);
         rewardStack.enchant(enchantmentsRegistry.getOrThrow(Enchantments.SWEEPING_EDGE), 3);
 
