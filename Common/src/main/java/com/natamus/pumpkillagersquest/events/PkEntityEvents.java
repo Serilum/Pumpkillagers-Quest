@@ -154,7 +154,7 @@ public class PkEntityEvents {
         }
 
         if (itemName.endsWith(".")) {
-            MessageFunctions.sendMessage(player, "As you pick up the piece of paper, you see coordinates to a prisoner camp written on it. You feel bad about unleashing the Pumpkillager back into the world. Maybe a prisoner can help you stop him?", ChatFormatting.GRAY, true);
+            MessageFunctions.sendTranslatableMessage(player, "collective.pumpkillagersquest.message.pickuppiece", true, ChatFormatting.GRAY);
             itemStack.set(DataComponents.CUSTOM_NAME, Component.translatable(itemName.replace(".", "")));
         }
 

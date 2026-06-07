@@ -43,7 +43,7 @@ public class ClientRenderEvent {
 
 			if (cP != null) {
 				timeLeftRenderRitual = 100;
-				Constants.mc.player.displayClientMessage(Component.translatable("The magical book shows you a glimpse of the ritual.").withStyle(ChatFormatting.GOLD), true);
+				Constants.mc.player.displayClientMessage(Component.translatable("collective.pumpkillagersquest.message.magicalbookshows").withStyle(ChatFormatting.GOLD), true);
 			}
 		}, true);
 	}
