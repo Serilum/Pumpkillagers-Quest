@@ -1,6 +1,7 @@
 package com.natamus.pumpkillagersquest.pumpkillager;
 
 import com.mojang.datafixers.util.Pair;
+import com.natamus.collective.functions.MessageFunctions;
 import com.natamus.pumpkillagersquest.util.*;
 import net.minecraft.ChatFormatting;
 import net.minecraft.commands.arguments.EntityAnchorArgument;
@@ -162,7 +163,7 @@ public class Conversations {
 
     public static void postFinalPrisonerConversation(Level level, Villager prisoner, Player targetPlayer) { // 9
         ItemStack rewardStack = new ItemStack(Items.NETHERITE_SWORD, 1);
-        rewardStack.setHoverName(Component.translatable("collective.pumpkillagersquest.gui.pumpkalibur").withStyle(ChatFormatting.GOLD));
+        rewardStack.setHoverName(MessageFunctions.getTranslatableComponent("collective.pumpkillagersquest.gui.pumpkalibur").withStyle(ChatFormatting.GOLD));
         rewardStack.enchant(Enchantments.SHARPNESS, 4);
         rewardStack.enchant(Enchantments.SWEEPING_EDGE, 3);
 
