@@ -1,6 +1,7 @@
 package com.natamus.pumpkillagersquest.pumpkillager;
 
 import com.mojang.datafixers.util.Pair;
+import com.natamus.collective.functions.MessageFunctions;
 import com.natamus.pumpkillagersquest.util.*;
 import net.minecraft.ChatFormatting;
 import net.minecraft.commands.arguments.EntityAnchorArgument;
@@ -168,7 +169,7 @@ public class Conversations {
         Registry<Enchantment> enchantmentsRegistry = level.registryAccess().lookupOrThrow(Registries.ENCHANTMENT);
 
         ItemStack rewardStack = new ItemStack(Items.NETHERITE_SWORD, 1);
-        rewardStack.set(DataComponents.CUSTOM_NAME, Component.translatable("collective.pumpkillagersquest.gui.pumpkalibur").withStyle(ChatFormatting.GOLD));
+        rewardStack.set(DataComponents.CUSTOM_NAME, MessageFunctions.getTranslatableComponent("collective.pumpkillagersquest.gui.pumpkalibur").withStyle(ChatFormatting.GOLD));
         rewardStack.enchant(enchantmentsRegistry.getOrThrow(Enchantments.SHARPNESS), 4);
         rewardStack.enchant(enchantmentsRegistry.getOrThrow(Enchantments.SWEEPING_EDGE), 3);
 

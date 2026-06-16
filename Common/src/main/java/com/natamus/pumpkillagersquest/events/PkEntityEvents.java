@@ -54,12 +54,10 @@ public class PkEntityEvents {
         }
         else if (entity instanceof Husk) {
             Husk husk = (Husk)entity;
-            if (husk.hasCustomName()) {
-                if (entity.getCustomName().getString().equals("The Ghost Knight")) {
-                    if (husk.getItemBySlot(EquipmentSlot.HEAD).getItem() instanceof PlayerHeadItem) {
-                        EntityFunctions.getTargetSelector(husk).removeAllGoals(goal -> true);
-                        EntityFunctions.getTargetSelector(husk).addGoal(2, new NearestAttackableTargetGoal<>(husk, Player.class, true));
-                    }
+            if (entity.entityTags().contains(Reference.MOD_ID + ".ghostknight")) {
+                if (husk.getItemBySlot(EquipmentSlot.HEAD).getItem() instanceof PlayerHeadItem) {
+                    EntityFunctions.getTargetSelector(husk).removeAllGoals(goal -> true);
+                    EntityFunctions.getTargetSelector(husk).addGoal(2, new NearestAttackableTargetGoal<>(husk, Player.class, true));
                 }
             }
         }
