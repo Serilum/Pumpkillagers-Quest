@@ -4,6 +4,7 @@ import com.natamus.pumpkillagersquest.util.Reference;
 import com.mojang.datafixers.util.Pair;
 import com.natamus.collective.data.GlobalVariables;
 import com.natamus.collective.functions.EntityFunctions;
+import com.natamus.collective.functions.MessageFunctions;
 import com.natamus.collective.schematic.ParseSchematicFile;
 import com.natamus.collective.schematic.ParsedSchematicObject;
 import com.natamus.pumpkillagersquest.events.rendering.ClientRenderEvent;
@@ -14,7 +15,6 @@ import net.minecraft.core.Registry;
 import net.minecraft.core.component.DataComponentMap;
 import net.minecraft.core.component.DataComponents;
 import net.minecraft.core.registries.Registries;
-import net.minecraft.network.chat.Component;
 import net.minecraft.server.MinecraftServer;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.Difficulty;
@@ -98,7 +98,7 @@ public class GenerateStructure {
                         ChestBlockEntity chestBlockEntity = new ChestBlockEntity(blockPos, blockEntity.getBlockState());
 
                         DataComponentMap.Builder dataComponentMapBuilder = DataComponentMap.builder();
-                        dataComponentMapBuilder.set(DataComponents.CUSTOM_NAME, Component.translatable("collective.pumpkillagersquest.gui.ritualstorage"));
+                        dataComponentMapBuilder.set(DataComponents.CUSTOM_NAME, MessageFunctions.getTranslatableComponent("collective.pumpkillagersquest.gui.ritualstorage"));
                         chestBlockEntity.setComponents(dataComponentMapBuilder.build());
 
                         Collections.shuffle(pumpkinHeads);
@@ -163,7 +163,8 @@ public class GenerateStructure {
                     }
                     ghostKnight.setItemSlot(EquipmentSlot.HEAD, SpookyHeads.getGhostKnightHead(1));
                     ghostKnight.setPos(ghostKnightPos.getX() + 0.5, ghostKnightPos.getY(), ghostKnightPos.getZ() + 0.5);
-                    ghostKnight.setCustomName(Component.translatable("collective.pumpkillagersquest.gui.ghostknight").withStyle(ChatFormatting.GOLD));
+                    ghostKnight.setCustomName(MessageFunctions.getTranslatableComponent("collective.pumpkillagersquest.gui.ghostknight").withStyle(ChatFormatting.GOLD));
+                    ghostKnight.getTags().add(Reference.MOD_ID + ".ghostknight");
 
                     level.addFreshEntity(ghostKnightHorse);
                     level.addFreshEntity(ghostKnight);
@@ -190,7 +191,7 @@ public class GenerateStructure {
                     }
                     ghostRider.setItemSlot(EquipmentSlot.HEAD, SpookyHeads.getGhostRiderHead(1));
                     ghostRider.setPos(ghostKnightPos.getX() + 0.5, ghostRiderPos.getY(), ghostKnightPos.getZ() + 0.5);
-                    ghostRider.setCustomName(Component.translatable("collective.pumpkillagersquest.gui.ghostrider").withStyle(ChatFormatting.GOLD));
+                    ghostRider.setCustomName(MessageFunctions.getTranslatableComponent("collective.pumpkillagersquest.gui.ghostrider").withStyle(ChatFormatting.GOLD));
 
                     level.addFreshEntity(ghostRiderHorse);
                     level.addFreshEntity(ghostRider);
