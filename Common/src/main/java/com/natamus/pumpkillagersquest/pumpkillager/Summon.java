@@ -13,7 +13,7 @@ import net.minecraft.server.MinecraftServer;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.entity.EntitySpawnReason;
-import net.minecraft.world.entity.EntityType;
+import net.minecraft.world.entity.EntityTypes;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.Mob;
 import net.minecraft.world.entity.ai.goal.target.NearestAttackableTargetGoal;
@@ -115,7 +115,7 @@ public class Summon {
 
         List<LivingEntity> minionsToSummon = new ArrayList<LivingEntity>();
         for (int i = 0; i < 4; i++) {
-            ZombieVillager zombieVillager = EntityType.ZOMBIE_VILLAGER.create(level, EntitySpawnReason.EVENT);
+            ZombieVillager zombieVillager = EntityTypes.ZOMBIE_VILLAGER.create(level, EntitySpawnReason.EVENT);
             zombieVillager.setItemInHand(InteractionHand.MAIN_HAND, swordStack.copy());
 
             EntityFunctions.getTargetSelector(zombieVillager).removeAllGoals(goal -> true);
@@ -141,7 +141,7 @@ public class Summon {
 
         List<LivingEntity> minionsToSummon = new ArrayList<LivingEntity>();
         for (int i = 0; i < 4; i++) {
-            Skeleton skeleton = EntityType.SKELETON.create(level, EntitySpawnReason.EVENT);
+            Skeleton skeleton = EntityTypes.SKELETON.create(level, EntitySpawnReason.EVENT);
             skeleton.setItemInHand(InteractionHand.MAIN_HAND, bowStack.copy());
 
             EntityFunctions.getTargetSelector(skeleton).removeAllGoals(goal -> true);
@@ -161,8 +161,8 @@ public class Summon {
 
         List<LivingEntity> minionsToSummon = new ArrayList<LivingEntity>();
         for (int i = 0; i < 2; i++) {
-            minionsToSummon.add(EntityType.WITCH.create(level, EntitySpawnReason.EVENT));
-            minionsToSummon.add(EntityType.PHANTOM.create(level, EntitySpawnReason.EVENT));
+            minionsToSummon.add(EntityTypes.WITCH.create(level, EntitySpawnReason.EVENT));
+            minionsToSummon.add(EntityTypes.PHANTOM.create(level, EntitySpawnReason.EVENT));
         }
 
         summonMinionsAround(level, pumpkillager, player, pos, minionsToSummon);
@@ -185,8 +185,8 @@ public class Summon {
 
         List<LivingEntity> minionsToSummon = new ArrayList<LivingEntity>();
         for (int i = 0; i < 2; i++) {
-            Vindicator vindicator = EntityType.VINDICATOR.create(level, EntitySpawnReason.EVENT);
-            Pillager pillager = EntityType.PILLAGER.create(level, EntitySpawnReason.EVENT);
+            Vindicator vindicator = EntityTypes.VINDICATOR.create(level, EntitySpawnReason.EVENT);
+            Pillager pillager = EntityTypes.PILLAGER.create(level, EntitySpawnReason.EVENT);
 
             vindicator.setItemInHand(InteractionHand.MAIN_HAND, axeStack.copy());
             pillager.setItemInHand(InteractionHand.MAIN_HAND, crossbowStack.copy());

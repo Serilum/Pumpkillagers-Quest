@@ -1,5 +1,4 @@
 package com.natamus.pumpkillagersquest.util;
-import com.natamus.pumpkillagersquest.util.Reference;
 
 import com.mojang.datafixers.util.Pair;
 import com.natamus.collective.data.GlobalVariables;
@@ -18,10 +17,7 @@ import net.minecraft.core.registries.Registries;
 import net.minecraft.server.MinecraftServer;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.Difficulty;
-import net.minecraft.world.entity.EntitySpawnReason;
-import net.minecraft.world.entity.EntityType;
-import net.minecraft.world.entity.EquipmentSlot;
-import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.entity.*;
 import net.minecraft.world.entity.ai.goal.target.NearestAttackableTargetGoal;
 import net.minecraft.world.entity.animal.equine.SkeletonHorse;
 import net.minecraft.world.entity.animal.equine.ZombieHorse;
@@ -86,10 +82,10 @@ public class GenerateStructure {
 
             minecraftServer.execute(() -> {
                 List<ItemStack> pumpkinHeads = SpookyHeads.getAllPumpkinHeads();
-                List<Integer> chestSlotRange = new ArrayList<Integer>(IntStream.rangeClosed(0, 26).boxed().toList());
-                List<Integer> randomAmounts = new ArrayList<Integer>(Arrays.asList(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 2, 2, 2, 2));
-                List<Item> candleItems = new ArrayList<Item>(Arrays.asList(Items.BLACK_CANDLE, Items.ORANGE_CANDLE, Items.RED_CANDLE, Items.WHITE_CANDLE));
-                List<Integer> candleAmounts = new ArrayList<Integer>(Arrays.asList(1, 2, 1, 1, 2, 1, 2, 2, 1, 1, 2));
+                List<Integer> chestSlotRange = new ArrayList<>(IntStream.rangeClosed(0, 26).boxed().toList());
+                List<Integer> randomAmounts = new ArrayList<>(Arrays.asList(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 2, 2, 2, 2));
+                List<Item> candleItems = new ArrayList<>(Arrays.asList(Items.DYED_CANDLE.black(), Items.DYED_CANDLE.orange(), Items.DYED_CANDLE.red(), Items.DYED_CANDLE.white()));
+                List<Integer> candleAmounts = new ArrayList<>(Arrays.asList(1, 2, 1, 1, 2, 1, 2, 2, 1, 1, 2));
 
                 for (Pair<BlockPos, BlockEntity> blockEntityPair : parsedSchematicObject.getBlockEntities(level)) {
                     BlockPos blockPos = blockEntityPair.getFirst();
@@ -106,14 +102,14 @@ public class GenerateStructure {
                         Collections.shuffle(candleItems);
                         Collections.shuffle(candleAmounts);
 
-                        List<Integer> tempChestSlotRange = new ArrayList<Integer>(chestSlotRange);
+                        List<Integer> tempChestSlotRange = new ArrayList<>(chestSlotRange);
                         for (ItemStack pumpkinHead : pumpkinHeads) {
                             pumpkinHead.setCount(randomAmounts.get(GlobalVariables.random.nextInt(randomAmounts.size())));
                             chestBlockEntity.setItem(tempChestSlotRange.getFirst(), pumpkinHead);
                             tempChestSlotRange.removeFirst();
                         }
 
-                        if (candleItems.size() > 0) {
+                        if (!candleItems.isEmpty()) {
                             int i = 0;
                             for (int remainingChestSlot : tempChestSlotRange) {
                                 chestBlockEntity.setItem(remainingChestSlot, new ItemStack(candleItems.getFirst(), candleAmounts.get(i)));
@@ -140,14 +136,14 @@ public class GenerateStructure {
                     // Ghost Knight
                     BlockPos ghostKnightPos = centerPos.north(3).east(3).above(aboveFloorYLevel).immutable();
 
-                    SkeletonHorse ghostKnightHorse = EntityType.SKELETON_HORSE.create(level, EntitySpawnReason.STRUCTURE);
+                    SkeletonHorse ghostKnightHorse = EntityTypes.SKELETON_HORSE.create(level, new EntitySpawnRequest(EntitySpawnReason.STRUCTURE, true));
                     ghostKnightHorse.setPos(ghostKnightPos.getX()+0.5, ghostKnightPos.getY(), ghostKnightPos.getZ()+0.5);
                     ghostKnightHorse.setItemSlot(EquipmentSlot.SADDLE, new ItemStack(Items.SADDLE));
                     ghostKnightHorse.setTamed(true);
 
                     LivingEntity ghostKnight;
                     if (!isPeaceful) {
-                        ghostKnight = EntityType.HUSK.create(level, EntitySpawnReason.STRUCTURE);
+                        ghostKnight = EntityTypes.HUSK.create(level, new EntitySpawnRequest(EntitySpawnReason.STRUCTURE, true));
 
                         ItemStack swordStack = new ItemStack(Items.GOLDEN_SWORD);
                         swordStack.enchant(enchantmentRegistry.getOrThrow(Enchantments.SHARPNESS), 1);
@@ -159,7 +155,7 @@ public class GenerateStructure {
                         EntityFunctions.getTargetSelector(husk).addGoal(2, new NearestAttackableTargetGoal<>(husk, Player.class, true));
                     }
                     else {
-                        ghostKnight = EntityType.VILLAGER.create(level, EntitySpawnReason.STRUCTURE);
+                        ghostKnight = EntityTypes.VILLAGER.create(level, new EntitySpawnRequest(EntitySpawnReason.STRUCTURE, true));
                     }
                     ghostKnight.setItemSlot(EquipmentSlot.HEAD, SpookyHeads.getGhostKnightHead(1));
                     ghostKnight.setPos(ghostKnightPos.getX() + 0.5, ghostKnightPos.getY(), ghostKnightPos.getZ() + 0.5);
@@ -173,21 +169,21 @@ public class GenerateStructure {
                     // Ghost Rider
                     BlockPos ghostRiderPos = centerPos.south(3).west(3).above(aboveFloorYLevel).immutable();
 
-                    ZombieHorse ghostRiderHorse = EntityType.ZOMBIE_HORSE.create(level, EntitySpawnReason.STRUCTURE);
+                    ZombieHorse ghostRiderHorse = EntityTypes.ZOMBIE_HORSE.create(level, new EntitySpawnRequest(EntitySpawnReason.STRUCTURE, true));
                     ghostRiderHorse.setPos(ghostRiderPos.getX()+0.5, ghostRiderPos.getY(), ghostRiderPos.getZ()+0.5);
                     ghostRiderHorse.setItemSlot(EquipmentSlot.SADDLE, new ItemStack(Items.SADDLE));
                     ghostRiderHorse.setTamed(true);
 
                     LivingEntity ghostRider;
                     if (!isPeaceful) {
-                        ghostRider = EntityType.STRAY.create(level, EntitySpawnReason.STRUCTURE);
+                        ghostRider = EntityTypes.STRAY.create(level, new EntitySpawnRequest(EntitySpawnReason.STRUCTURE, true));
 
                         ItemStack bowStack = new ItemStack(Items.BOW);
                         bowStack.enchant(enchantmentRegistry.getOrThrow(Enchantments.INFINITY), 1);
                         ghostRider.setItemSlot(EquipmentSlot.MAINHAND, bowStack);
                     }
                     else {
-                        ghostRider = EntityType.VILLAGER.create(level, EntitySpawnReason.STRUCTURE);
+                        ghostRider = EntityTypes.VILLAGER.create(level, new EntitySpawnRequest(EntitySpawnReason.STRUCTURE, true));
                     }
                     ghostRider.setItemSlot(EquipmentSlot.HEAD, SpookyHeads.getGhostRiderHead(1));
                     ghostRider.setPos(ghostKnightPos.getX() + 0.5, ghostRiderPos.getY(), ghostKnightPos.getZ() + 0.5);

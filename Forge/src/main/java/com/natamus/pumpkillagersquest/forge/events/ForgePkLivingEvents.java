@@ -9,7 +9,6 @@ import net.minecraftforge.eventbus.api.bus.BusGroup;
 import net.minecraftforge.eventbus.api.listener.SubscribeEvent;
 
 import java.lang.invoke.MethodHandles;
-import net.minecraftforge.fml.common.Mod;
 
 public class ForgePkLivingEvents {
 	public static void registerEventsInBus() {

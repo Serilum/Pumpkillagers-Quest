@@ -13,7 +13,6 @@ import net.minecraftforge.eventbus.api.bus.BusGroup;
 import net.minecraftforge.eventbus.api.listener.SubscribeEvent;
 
 import java.lang.invoke.MethodHandles;
-import net.minecraftforge.fml.common.Mod;
 
 public class ForgePkEntityEvents {
 	public static void registerEventsInBus() {

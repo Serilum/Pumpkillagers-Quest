@@ -103,7 +103,7 @@ public class Util {
     }
 
     public static void spawnLightning(Level level, BlockPos pos, LivingEntity target, Player player, boolean healTarget) {
-        LightningBolt lightningbolt = EntityType.LIGHTNING_BOLT.create(level, EntitySpawnReason.EVENT);
+        LightningBolt lightningbolt = EntityTypes.LIGHTNING_BOLT.create(level, EntitySpawnReason.EVENT);
         lightningbolt.setPos(Vec3.atBottomCenterOf(pos));
         level.addFreshEntity(lightningbolt);
 

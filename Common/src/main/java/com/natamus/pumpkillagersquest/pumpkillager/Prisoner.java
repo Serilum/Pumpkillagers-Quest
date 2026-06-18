@@ -9,7 +9,7 @@ import net.minecraft.resources.ResourceKey;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.EntitySpawnReason;
-import net.minecraft.world.entity.EntityType;
+import net.minecraft.world.entity.EntityTypes;
 import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.npc.villager.Villager;
 import net.minecraft.world.entity.npc.villager.VillagerProfession;
@@ -24,7 +24,7 @@ import net.minecraft.world.phys.Vec3;
 
 public class Prisoner {
     public static Villager createPrisoner(Level level, BlockPos pos, Player player, ResourceKey<VillagerProfession> profession, ItemStack headStack, ChatFormatting nameColour, boolean isKnown) {
-        Villager prisoner = EntityType.VILLAGER.create(level, EntitySpawnReason.MOB_SUMMONED);
+        Villager prisoner = EntityTypes.VILLAGER.create(level, EntitySpawnReason.MOB_SUMMONED);
 
         if (profession == null) {
             prisoner.setVillagerData(prisoner.getVillagerData().withType(level.registryAccess(), VillagerType.SNOW));

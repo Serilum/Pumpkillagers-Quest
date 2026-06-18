@@ -79,7 +79,7 @@ public class Manage {
             }
         }
 
-        Villager pumpkillager = EntityType.VILLAGER.create(level, EntitySpawnReason.MOB_SUMMONED);
+        Villager pumpkillager = EntityTypes.VILLAGER.create(level, EntitySpawnReason.MOB_SUMMONED);
 
         if (profession == null) {
             pumpkillager.setVillagerData(pumpkillager.getVillagerData().withType(level.registryAccess(), VillagerType.SNOW));
