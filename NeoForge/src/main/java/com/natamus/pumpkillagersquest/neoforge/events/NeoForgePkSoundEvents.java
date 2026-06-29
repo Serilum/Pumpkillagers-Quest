@@ -1,7 +1,6 @@
 package com.natamus.pumpkillagersquest.neoforge.events;
 
 import com.natamus.pumpkillagersquest.events.PkSoundEvents;
-import net.neoforged.api.distmarker.Dist;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.neoforge.client.event.sound.PlaySoundEvent;
 

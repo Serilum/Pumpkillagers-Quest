@@ -3,7 +3,6 @@ package com.natamus.pumpkillagersquest.forge.events;
 import com.natamus.pumpkillagersquest.events.PkAttackEvents;
 import net.minecraftforge.event.entity.player.ArrowNockEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
-import net.minecraftforge.fml.common.Mod;
 
 public class ForgePkAttackEvents {
     @SubscribeEvent
