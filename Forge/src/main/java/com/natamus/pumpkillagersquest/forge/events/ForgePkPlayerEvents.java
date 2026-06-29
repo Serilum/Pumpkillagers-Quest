@@ -15,10 +15,7 @@ public class ForgePkPlayerEvents {
 
     @SubscribeEvent
     public static boolean onCharacterInteract(PlayerInteractEvent.EntityInteractSpecific e) {
-        if (PkPlayerEvents.onCharacterInteract(e.getEntity(), e.getLevel(), e.getHand(), e.getTarget(), null).equals(InteractionResult.SUCCESS)) {
-            return true;
-        }
-        return false;
+	    return PkPlayerEvents.onCharacterInteract(e.getEntity(), e.getLevel(), e.getHand(), e.getTarget(), null).equals(InteractionResult.SUCCESS);
     }
 
     @SubscribeEvent
