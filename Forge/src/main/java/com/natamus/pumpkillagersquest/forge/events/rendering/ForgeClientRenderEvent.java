@@ -2,7 +2,6 @@ package com.natamus.pumpkillagersquest.forge.events.rendering;
 
 import com.natamus.pumpkillagersquest.data.Constants;
 import com.natamus.pumpkillagersquest.events.rendering.ClientRenderEvent;
-import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.event.TickEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 

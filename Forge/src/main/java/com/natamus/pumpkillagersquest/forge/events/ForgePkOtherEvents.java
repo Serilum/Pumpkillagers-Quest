@@ -9,7 +9,6 @@ import net.minecraftforge.event.RegisterCommandsEvent;
 import net.minecraftforge.event.level.ExplosionEvent;
 import net.minecraftforge.event.level.PistonEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
-import net.minecraftforge.fml.common.Mod;
 
 public class ForgePkOtherEvents {
     @SubscribeEvent
