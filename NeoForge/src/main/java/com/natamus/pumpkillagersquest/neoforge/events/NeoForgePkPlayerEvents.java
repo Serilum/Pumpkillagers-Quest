@@ -7,7 +7,7 @@ import net.neoforged.neoforge.event.entity.player.PlayerInteractEvent;
 
 public class NeoForgePkPlayerEvents {
 	@SubscribeEvent
-	public static void onCharacterInteract(PlayerInteractEvent.EntityInteractSpecific e) {
+	public static void onCharacterInteract(PlayerInteractEvent.EntityInteract e) {
 		if (PkPlayerEvents.onCharacterInteract(e.getEntity(), e.getLevel(), e.getHand(), e.getTarget(), null).equals(InteractionResult.SUCCESS)) {
 			e.setCanceled(true);
 		}
