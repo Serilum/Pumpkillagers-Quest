@@ -17,7 +17,7 @@ import net.minecraft.world.entity.npc.villager.Villager;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.Explosion;
 import net.minecraft.world.level.Level;
-import net.minecraft.world.level.block.RedStoneWireBlock;
+import net.minecraft.world.level.block.RedstoneWireBlock;
 import net.minecraft.world.phys.AABB;
 
 import java.util.ArrayList;
@@ -43,7 +43,7 @@ public class PkOtherEvents {
             }
         }
 
-        if (!(level.getBlockState(pos.north()).getBlock() instanceof RedStoneWireBlock)) {
+        if (!(level.getBlockState(pos.north()).getBlock() instanceof RedstoneWireBlock)) {
             return;
         }
 
@@ -51,7 +51,7 @@ public class PkOtherEvents {
 
         int i = 0;
         for (BlockPos bpa : BlockPos.betweenClosed(pos.getX()-3, pos.getY(), pos.getZ()-3, pos.getX()+3, pos.getY(), pos.getZ()+3)) {
-            if (level.getBlockState(bpa).getBlock() instanceof RedStoneWireBlock) {
+            if (level.getBlockState(bpa).getBlock() instanceof RedstoneWireBlock) {
                 redstonePositionsLeft.remove(Integer.valueOf(i));
             }
             i+=1;

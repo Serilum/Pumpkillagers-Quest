@@ -4,5 +4,5 @@ public class Reference {
 	public static final String MOD_ID = "pumpkillagersquest";
 	public static final String NAME = "Pumpkillager's Quest";
 	public static final String VERSION = "5.5";
-	public static final String ACCEPTED_VERSIONS = "[26.2.0]";
+	public static final String ACCEPTED_VERSIONS = "[26.3.0]";
 }
