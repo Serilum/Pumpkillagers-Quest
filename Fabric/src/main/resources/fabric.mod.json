@@ -1,22 +1,22 @@
 {
   "schemaVersion": 1,
   "id": "pumpkillagersquest",
-  "version": "5.4",
+  "version": "5.6",
 
   "name": "Pumpkillager's Quest",
   "description": "Help out the Pumpkillager! With custom encounters, cosmetics and a boss fight. A SpookyJam 2022 submission.",
-  "authors": [ "Rick South" ],
+  "authors": [ "Serilum" ],
   "contact": {
     "homepage": "https://serilum.com/mod/pumpkillagers-quest",
     "sources": "https://github.com/Serilum/Pumpkillagers-Quest",
     "issues": "https://github.com/Serilum/.issue-tracker/labels/Mod:%20Pumpkillager%27s%20Quest"
   },
 
-  "license": "All Right Reserved",
+  "license": "All Rights Reserved",
   "icon": "icon.png",
 
   "environment": "*",
-  "entrypoints": { "main": [ "com.natamus.pumpkillagersquest.ModFabric" ], "client": [ "com.natamus.pumpkillagersquest.ModFabricClient" ], "modmenu": [ "com.natamus.pumpkillagersquest.fabric.config.IntegrateModMenu" ] },
+  "entrypoints": { "main": [ "com.serilum.pumpkillagersquest.ModFabric" ], "client": [ "com.serilum.pumpkillagersquest.ModFabricClient" ], "modmenu": [ "com.serilum.pumpkillagersquest.fabric.config.IntegrateModMenu" ] },
   "mixins": [
     "pumpkillagersquest.mixins.json"
   ],
@@ -26,13 +26,13 @@
     "fabric": "*",
     "minecraft": ">=1.20",
     "java": ">=17",
-    "collective": ">=8.39"
+    "collective": ">=8.40"
   },
 
   "custom": {
     "modmenu": {
       "links": {
-        "Donate <3" : "https://ricksouth.com/donate"
+        "Donate <3" : "https://serilum.com/donate"
       }
     }
   },
@@ -41,14 +41,13 @@
 	  " ",
 	  "Thank you very much to my Membership sponsors for supporting the development of this mod!",
 	  " ",
-	  "If you would like to contribute too, check out https://serilum.com/donate.",
+	  "If you would like to contribute too, check out https://serilum.com/donate",
 	  " ",
 	  "Membership sponsors:",
 	  " Andrean Olgo",
 	  " AnyankaT",
 	  " aternosorg",
 	  " Cherriesaurus",
-	  " Josh",
 	  " Linda Jansen",
 	  " MWS",
 	  " Tyler Behl"
