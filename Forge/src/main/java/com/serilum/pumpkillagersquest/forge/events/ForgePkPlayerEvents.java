@@ -1,0 +1,20 @@
+package com.serilum.pumpkillagersquest.forge.events;
+
+import com.serilum.pumpkillagersquest.events.PkPlayerEvents;
+import net.minecraft.world.InteractionResult;
+import net.minecraftforge.event.entity.player.PlayerInteractEvent;
+import net.minecraftforge.eventbus.api.SubscribeEvent;
+
+public class ForgePkPlayerEvents {
+	@SubscribeEvent
+	public static void onCharacterInteract(PlayerInteractEvent.EntityInteract e) {
+		if (PkPlayerEvents.onCharacterInteract(e.getEntity(), e.getLevel(), e.getHand(), e.getTarget(), null).equals(InteractionResult.SUCCESS)) {
+			e.setCanceled(true);
+		}
+	}
+
+	@SubscribeEvent
+	public static void onRightClickItem(PlayerInteractEvent.RightClickItem e) {
+		PkPlayerEvents.onRightClickItem(e.getEntity(), e.getLevel(), e.getHand());
+	}
+}
