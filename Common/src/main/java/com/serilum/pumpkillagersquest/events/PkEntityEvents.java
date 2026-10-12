@@ -11,6 +11,7 @@ import com.serilum.pumpkillagersquest.util.Reference;
 import com.serilum.pumpkillagersquest.util.Util;
 import net.minecraft.ChatFormatting;
 import net.minecraft.network.chat.Component;
+import net.minecraft.server.level.ServerBossEvent;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EquipmentSlot;
@@ -126,7 +127,11 @@ public class PkEntityEvents {
 
 				Data.pumpkillagerPositions.remove(pumpkillager);
 				Data.pumpkillagerPlayerTarget.remove(pumpkillager);
-				Data.pumpkillagerBossEvents.remove(pumpkillager);
+
+				ServerBossEvent serverBossEvent = Data.pumpkillagerBossEvents.remove(pumpkillager);
+				if (serverBossEvent != null) {
+					serverBossEvent.removeAllPlayers();
+				}
 			}
 			else if (Util.isPrisoner(entity)) {
 				if (Data.allPrisoners.containsKey(level)) {

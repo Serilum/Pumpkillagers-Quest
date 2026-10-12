@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "id": "pumpkillagersquest",
-  "version": "5.6",
+  "version": "5.7",
 
   "name": "Pumpkillager's Quest",
   "description": "Help out the Pumpkillager! With custom encounters, cosmetics and a boss fight. A SpookyJam 2022 submission.",
@@ -26,7 +26,7 @@
     "fabric": "*",
     "minecraft": ">=1.20",
     "java": ">=17",
-    "collective": ">=8.40"
+    "collective": ">=8.47"
   },
 
   "custom": {
@@ -44,7 +44,6 @@
 	  "If you would like to contribute too, check out https://serilum.com/donate",
 	  " ",
 	  "Membership sponsors:",
-	  " Andrean Olgo",
 	  " AnyankaT",
 	  " aternosorg",
 	  " Cherriesaurus",
