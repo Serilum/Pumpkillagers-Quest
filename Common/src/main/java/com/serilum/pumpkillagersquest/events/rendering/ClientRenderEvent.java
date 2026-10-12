@@ -28,6 +28,8 @@ public class ClientRenderEvent {
 
 	public static List<Pair<BlockPos, BlockState>> previousStates = new ArrayList<Pair<BlockPos, BlockState>>();
 	private static HashMap<BlockPos, SkullBlockEntity> playerHeadEntities = new HashMap<BlockPos, SkullBlockEntity>();
+	private static HashMap<BlockPos, Block> renderedBlocks = new HashMap<>();
+	private static List<BlockPos> changedPositions = new ArrayList<>();
 
 	public static void setTemporaryRitualRender(BlockPos cP, Block cB, Block rB) {
 		ClientLevel clientLevel = Constants.mc.level;
@@ -54,6 +56,10 @@ public class ClientRenderEvent {
 				BlockPos setPos = previousPair.getFirst();
 				BlockState setState = previousPair.getSecond();
 
+				if (worldChangedDuringRender(clientLevel, setPos, setState)) {
+					continue;
+				}
+
 				clientLevel.setBlock(setPos, setState, 3);
 
 				if (setState.getBlock() instanceof PlayerHeadBlock && playerHeadEntities.containsKey(setPos)) {
@@ -64,6 +70,8 @@ public class ClientRenderEvent {
 			shouldReset = false;
 			previousStates = new ArrayList<Pair<BlockPos, BlockState>>();
 			playerHeadEntities = new HashMap<BlockPos, SkullBlockEntity>();
+			renderedBlocks = new HashMap<>();
+			changedPositions = new ArrayList<>();
 			return;
 		}
 
@@ -74,7 +82,7 @@ public class ClientRenderEvent {
 				previousStates.add(new Pair<BlockPos, BlockState>(centerPos.immutable(), clientLevel.getBlockState(centerPos)));
 				previousStates.add(new Pair<BlockPos, BlockState>(centerPos.below().immutable(), clientLevel.getBlockState(centerPos.below())));
 			}
-			clientLevel.setBlock(centerPos, centerBlock.defaultBlockState(), 3);
+			renderRitualBlock(clientLevel, centerPos, centerBlock.defaultBlockState());
 
 			int i = 0;
 			for (BlockPos posAround : BlockPos.betweenClosed(centerPos.getX()-3, centerPos.getY(), centerPos.getZ()-3, centerPos.getX()+3, centerPos.getY(), centerPos.getZ()+3)) {
@@ -94,9 +102,9 @@ public class ClientRenderEvent {
 							state = state.setValue(CandleBlock.LIT, true);
 						}
 
-						clientLevel.setBlock(posAround, state, 3);
+						renderRitualBlock(clientLevel, posAround, state);
 					} else {
-						clientLevel.setBlock(posAround, Blocks.AIR.defaultBlockState(), 3);
+						renderRitualBlock(clientLevel, posAround, Blocks.AIR.defaultBlockState());
 					}
 				}
 
@@ -108,5 +116,29 @@ public class ClientRenderEvent {
 				setTemporaryRitualRender(null, null, null);
 			}
 		}
+	}
+
+	private static void renderRitualBlock(ClientLevel clientLevel, BlockPos pos, BlockState ritualState) {
+		if (changedPositions.contains(pos)) {
+			return;
+		}
+
+		Block renderedBlock = renderedBlocks.get(pos);
+		if (renderedBlock != null && !clientLevel.getBlockState(pos).getBlock().equals(renderedBlock)) {
+			changedPositions.add(pos.immutable());
+			return;
+		}
+
+		clientLevel.setBlock(pos, ritualState, 3);
+		renderedBlocks.put(pos.immutable(), ritualState.getBlock());
+	}
+
+	private static boolean worldChangedDuringRender(ClientLevel clientLevel, BlockPos pos, BlockState previousState) {
+		if (changedPositions.contains(pos)) {
+			return true;
+		}
+
+		Block expectedBlock = renderedBlocks.getOrDefault(pos, previousState.getBlock());
+		return !clientLevel.getBlockState(pos).getBlock().equals(expectedBlock);
 	}
 }
