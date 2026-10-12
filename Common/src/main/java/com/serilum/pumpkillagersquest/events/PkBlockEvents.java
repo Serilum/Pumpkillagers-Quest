@@ -132,7 +132,7 @@ public class PkBlockEvents {
 								}
 							}
 
-							if (foundQuestBook) {
+							if (foundQuestBook && playerTags.contains(Reference.MOD_ID + ".questbookgiven")) {
 								return true;
 							}
 

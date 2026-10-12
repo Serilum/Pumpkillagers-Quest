@@ -79,6 +79,9 @@ public class PkLivingEvents {
 		BlockPos pos = pumpkillager.blockPosition();
 
 		Set<String> pumpkillagerTags = pumpkillager.getTags();
+		if (pumpkillagerTags.contains(Reference.MOD_ID + ".iskilled")) {
+			return 0F;
+		}
 
 		float returnDamage = damageAmount;
 		if (!pumpkillagerTags.contains(Reference.MOD_ID + ".isweakened")) {
@@ -139,6 +142,12 @@ public class PkLivingEvents {
 					float newHealth = currentHealth-damageAmount;
 
 					returnDamage = 0F;
+					if (newHealth <= 0F) {
+						EntityFunctions.forceSetHealth(pumpkillager, 1F);
+						Actions.shrinkAndKillPumpkillager(level, pumpkillager, Data.pumpkillagerPlayerTarget.get(pumpkillager));
+						return returnDamage;
+					}
+
 					EntityFunctions.forceSetHealth(pumpkillager, newHealth);
 
 					if (serverBossEvent != null) {

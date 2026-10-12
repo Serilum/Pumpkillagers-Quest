@@ -134,42 +134,50 @@ public class Manage {
 	}
 
 	public static void placePumpkillagerBlocks(Level level, BlockPos pos, int placementId) {
-		List<BlockPos> processedPoss = new ArrayList<BlockPos>();
-		List<Pair<BlockPos, BlockState>> currentStates = new ArrayList<Pair<BlockPos, BlockState>>();
+		List<Pair<BlockPos, BlockState>> pumpkillagerStates = new ArrayList<>();
 
 		if (placementId == 0) {
 			BlockPos below = pos.below().immutable();
 
-			currentStates.add(new Pair<BlockPos, BlockState>(below, level.getBlockState(below)));
-			level.setBlock(below, Blocks.CRYING_OBSIDIAN.defaultBlockState(), 3);
-			processedPoss.add(below);
+			pumpkillagerStates.add(new Pair<>(below, Blocks.CRYING_OBSIDIAN.defaultBlockState()));
 
 			for (BlockPos ap : Util.getSidePositions(below)) {
-				currentStates.add(new Pair<BlockPos, BlockState>(ap, level.getBlockState(ap)));
-				level.setBlock(ap, Blocks.OBSIDIAN.defaultBlockState(), 3);
-				processedPoss.add(ap);
+				pumpkillagerStates.add(new Pair<>(ap, Blocks.OBSIDIAN.defaultBlockState()));
 			}
 
 			for (BlockPos ap : Util.getSidePositions(pos)) {
-				currentStates.add(new Pair<BlockPos, BlockState>(ap, level.getBlockState(ap)));
-				level.setBlock(ap, Blocks.BLACKSTONE_WALL.defaultBlockState(), 3);
-				processedPoss.add(ap);
+				pumpkillagerStates.add(new Pair<>(ap, Blocks.BLACKSTONE_WALL.defaultBlockState()));
 			}
 
 			for (BlockPos ap : Util.getSidePositions(pos.above())) {
-				currentStates.add(new Pair<BlockPos, BlockState>(ap.immutable(), level.getBlockState(ap)));
-				level.setBlock(ap, Blocks.SOUL_LANTERN.defaultBlockState(), 3);
-				processedPoss.add(ap);
+				pumpkillagerStates.add(new Pair<>(ap.immutable(), Blocks.SOUL_LANTERN.defaultBlockState()));
 			}
 		}
 		else if (placementId == 1) {
-			BlockPos belowPos = pos.below().immutable();
-			currentStates.add(new Pair<BlockPos, BlockState>(belowPos, level.getBlockState(belowPos)));
-			level.setBlock(belowPos, Blocks.OBSIDIAN.defaultBlockState(), 3);
-			processedPoss.add(belowPos);
+			pumpkillagerStates.add(new Pair<>(pos.below().immutable(), Blocks.OBSIDIAN.defaultBlockState()));
 		}
 		else {
 			return;
+		}
+
+		List<BlockPos> processedPoss = new ArrayList<>();
+		List<Pair<BlockPos, BlockState>> currentStates = new ArrayList<>();
+		List<Pair<BlockPos, BlockState>> statesToPlace = new ArrayList<>();
+
+		for (Pair<BlockPos, BlockState> pumpkillagerState : pumpkillagerStates) {
+			BlockPos statePos = pumpkillagerState.getFirst();
+			if (level.getBlockEntity(statePos) != null) {
+				continue;
+			}
+
+			currentStates.add(new Pair<>(statePos, level.getBlockState(statePos)));
+			statesToPlace.add(pumpkillagerState);
+			processedPoss.add(statePos);
+		}
+
+		// Top to bottom, so blocks that need support (stems, crops) are replaced before what they stand on.
+		for (int i = statesToPlace.size() - 1; i >= 0; i--) {
+			level.setBlock(statesToPlace.get(i).getFirst(), statesToPlace.get(i).getSecond(), 3);
 		}
 
 		Data.globalProcessedPoss.addAll(processedPoss);

@@ -91,14 +91,14 @@ public class Actions {
 		BlockPos prisonerCampCoordinates = Util.getPrisonerCampCoordinates(level, pumpkillager, player);
 		if (prisonerCampCoordinates != null) {
 			coordinateString = prisonerCampCoordinates.getX() + ", " + prisonerCampCoordinates.getY() + ", " + prisonerCampCoordinates.getZ();
+
+			CompletableFuture.runAsync(() -> {
+				GenerateStructure.generatePrisonerCamp(level, player, prisonerCampCoordinates, 40);
+			});
 		}
 
 		ItemStack paperStack = new ItemStack(Items.PAPER, 1);
 		paperStack.set(DataComponents.CUSTOM_NAME, Component.translatable(QuestData.questOneCoordinatePaperPrefix + coordinateString + "."));
-
-		CompletableFuture.runAsync(() -> {
-			GenerateStructure.generatePrisonerCamp(level, player, prisonerCampCoordinates, 40);
-		});
 
 		return paperStack;
 	}

@@ -19,7 +19,7 @@ public class PkAttackEvents {
 			return;
 		}
 
-		if (Data.allPumpkillagers.get(level).size() == 0) {
+		if (!Data.allPumpkillagers.containsKey(level) || Data.allPumpkillagers.get(level).isEmpty()) {
 			return;
 		}
 
