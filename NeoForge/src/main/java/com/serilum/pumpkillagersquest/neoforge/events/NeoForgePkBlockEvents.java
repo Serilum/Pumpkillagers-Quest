@@ -15,7 +15,7 @@ public class NeoForgePkBlockEvents {
 	@SubscribeEvent
 	public static void onBlockBreak(BreakBlockEvent e) {
 		Level level = WorldFunctions.getWorldIfInstanceOfAndNotRemote(e.getLevel());
-		if (level.isClientSide()) {
+		if (level == null) {
 			return;
 		}
 
