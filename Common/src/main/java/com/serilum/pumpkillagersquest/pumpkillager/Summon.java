@@ -2,7 +2,7 @@ package com.serilum.pumpkillagersquest.pumpkillager;
 
 import com.natamus.collective.functions.BlockPosFunctions;
 import com.natamus.collective.functions.EntityFunctions;
-import com.serilum.pumpkillagersquest.util.Data;
+import com.serilum.pumpkillagersquest.config.ConfigHandler;
 import com.serilum.pumpkillagersquest.util.Reference;
 import com.serilum.pumpkillagersquest.util.Util;
 import net.minecraft.ChatFormatting;
@@ -53,7 +53,7 @@ public class Summon {
 	}
 
 	public static void checkForNewSummon(Level level, Villager pumpkillager, Player player, float newHealth) {
-		float maxHealth = Data.pumpkillagerMaxHealth;
+		float maxHealth = (float)ConfigHandler.finalBossMaxHealth;
 		float healthPercentage = newHealth/maxHealth;
 
 		Set<String> tags = pumpkillager.entityTags();
