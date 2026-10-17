@@ -43,7 +43,6 @@ public class Data {
 	public static List<BlockPos> globalProcessedPoss = new ArrayList<BlockPos>();
 
 	public static final TagKey<Block> pumpkinTag = TagKey.create(Registries.BLOCK, new ResourceLocation("minecraft", "crops/pumpkin"));
-	public static float pumpkillagerMaxHealth = 300F;
 	public static final String pumpkillagerName = "The Pumpkillager";
 	public static final String prisonerNameUnknown = "Prisoner";
 	public static final String prisonerNameKnown = "Jax o'Saturn";
