@@ -4,6 +4,7 @@ import com.mojang.datafixers.util.Pair;
 import com.natamus.collective.functions.EntityFunctions;
 import com.natamus.collective.functions.MessageFunctions;
 import com.natamus.collective.functions.TaskFunctions;
+import com.serilum.pumpkillagersquest.config.ConfigHandler;
 import com.serilum.pumpkillagersquest.pumpkillager.*;
 import com.serilum.pumpkillagersquest.util.Data;
 import com.serilum.pumpkillagersquest.util.Reference;
@@ -152,7 +153,7 @@ public class PkLivingEvents {
 					EntityFunctions.forceSetHealth(pumpkillager, newHealth);
 
 					if (serverBossEvent != null) {
-						serverBossEvent.setProgress(newHealth / Data.pumpkillagerMaxHealth);
+						serverBossEvent.setProgress(newHealth / (float)ConfigHandler.finalBossMaxHealth);
 					}
 
 					if (!pumpkillager.entityTags().contains(Reference.MOD_ID + ".saidouch")) {

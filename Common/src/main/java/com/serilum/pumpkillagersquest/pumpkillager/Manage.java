@@ -2,6 +2,7 @@ package com.serilum.pumpkillagersquest.pumpkillager;
 
 import com.mojang.datafixers.util.Pair;
 import com.natamus.collective.functions.EntityFunctions;
+import com.serilum.pumpkillagersquest.config.ConfigHandler;
 import com.serilum.pumpkillagersquest.services.Services;
 import com.serilum.pumpkillagersquest.util.Data;
 import com.serilum.pumpkillagersquest.util.Reference;
@@ -102,7 +103,7 @@ public class Manage {
 
 		EntityFunctions.setEntitySize(pumpkillager, Util.getDefaultVillagerDimensions().scale(Float.parseFloat(scaleFloatString)), pumpkillager.getEyeHeight());
 
-		EntityFunctions.forceSetHealth(pumpkillager, Data.pumpkillagerMaxHealth);
+		EntityFunctions.forceSetHealth(pumpkillager, (float)ConfigHandler.finalBossMaxHealth);
 
 		for (String tag : oldtags) {
 			pumpkillager.entityTags().add(tag);
